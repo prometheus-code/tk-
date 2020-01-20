@@ -101,7 +101,7 @@ root.mainloop()
 
 这样就完成了以上三个部分。
 
-### 4.按钮区
+### 4.1按钮区的布置
 
 - 这个部分可能是工程量最大的地方，我们先搞好布局，再考虑按钮调用的问题
   - 关于布局可以参考我的布局
@@ -144,3 +144,86 @@ button_div.grid(row=3, column=3)
 
 
 接下来到剩下的三行按钮
+
+~~~
+button_4=tk.Button(width=5,text=' 4 ')
+button_5=tk.Button(width=5,text=' 5 ')
+button_6=tk.Button(width=5,text=' 6 ')
+button_multiply=tk.Button(width=5,text=' * ')
+button_is=tk.Button(width=5,text=' \n = \n ')
+
+button_4.grid(row=4, column=0)
+button_5.grid(row=4, column=1)
+button_6.grid(row=4, column=2)
+button_multiply.grid(row=4, column=3)
+button_is.grid(row=4, column=4, rowspan=5,sticky=tk.N+tk.S)
+
+button_1=tk.Button(width=5,text=' 1 ')
+button_2=tk.Button(width=5,text=' 2 ')
+button_3=tk.Button(width=5,text=' 3 ')
+button_minus=tk.Button(width=5,text=' - ')
+
+button_1.grid(row=5, column=0)
+button_2.grid(row=5, column=1)
+button_3.grid(row=5, column=2)
+button_minus.grid(row=5, column=3)
+
+button_help=tk.Button(width=5,text='HELP',command=lambda:tkinter.messagebox.showinfo('\
+提示','基本按照你想的去做就可以了，不过只能进行简单的运算'))#这里怕麻烦提前写上help键的调用
+button_0=tk.Button(width=5,text=' 0 ')
+button_point=tk.Button(width=5,text=' . ')
+button_add=tk.Button(width=5,text=' + ')
+
+button_help.grid(row=6, column=0)
+button_0.grid(row=6, column=1)
+button_point.grid(row=6, column=2)
+button_add.grid(row=6, column=3)
+~~~
+
+![image](https://raw.githubusercontent.com/prometheus-code/tk-/master/image/1.jpg)
+
+布局就这样完成了。
+
+### 4.2按钮区的函数调用
+
+- 我们完成了布局，现在在我们面前就只有一个问题了，我们如何用起这些按钮？
+
+- 前文提到了我们可以利用eval函数来帮助我们实现计算结果
+
+那我们可以直接使用字符串来帮助我们实现计算结果。
+
+对于 1 2 3 4 5 6 7 8 9 （ ）/ * - + % . 这些键我们可以直接这样写
+
+~~~
+button_z1= tk.Button(width=5,text='(',command=lambda:entry1.insert(INSERT,' ( '))
+~~~
+
+在后面用文本框的方法把对应的字符加上去
+
+
+
+- 但对于 = C ←这三个键我们就要特别对待了
+
+  - ' = '键的command内容enter函数
+
+    ~~~
+    def enter():
+    	en=eval(entry1.get())
+    	el=entry1.get()
+    	text1.set(el+'='+str(en))
+    	entry1.delete(0,END)
+    ~~~
+
+  - ' c '键的command内容clear函数
+
+    ~~~
+    def clear(self):
+    	entry1.delete(0,END)
+    	text1.set(' ')
+    ~~~
+
+  - ' ← '键
+
+    ~~~
+    button_del= tk.Button(width=5,text='←'，command=lambda:entry1.delete(len(et.get()) -1))
+    ~~~
