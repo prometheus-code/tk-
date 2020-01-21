@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.messagebox 
 root=tk.Tk()
 root.title("计算器")
+root.resizable(0, 0)
 
 text1=tk.StringVar()
 label1 =tk.Label(root, width=25,anchor='se',textvariable=text1)#显示的文本内容向右对齐
