@@ -217,7 +217,7 @@ button_z1= tk.Button(width=5,text='(',command=lambda:entry1.insert(INSERT,' ( ')
   - ' c '键的command内容clear函数
 
     ~~~
-    def clear(self):
+    def clear():
     	entry1.delete(0,END)
     	text1.set(' ')
     ~~~
@@ -225,5 +225,5 @@ button_z1= tk.Button(width=5,text='(',command=lambda:entry1.insert(INSERT,' ( ')
   - ' ← '键
 
     ~~~
-    button_del= tk.Button(width=5,text='←'，command=lambda:entry1.delete(len(et.get()) -1))
+    button_del= tk.Button(width=5,text='←'，command=lambda:entry1.delete(len(entry.get()) -1))
     ~~~
