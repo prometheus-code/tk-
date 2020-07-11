@@ -1,5 +1,5 @@
 # 计算器
-![AppVeyor](https://img.shields.io/appveyor/build/license/pass)
+
 
 ## 要用到的库
 
