@@ -1,6 +1,6 @@
 # 计算器
 
-
+![GitHub](https://img.shields.io/github/license/prometheus-code/tk-)
 ## 要用到的库
 
 - tkinter库
