@@ -1,5 +1,5 @@
 # 计算器
-
+![license%20scan-pass.svg](https://img.shields.io/badge/license%20scan-pass-brightgreen)
 
 ## 要用到的库
 
